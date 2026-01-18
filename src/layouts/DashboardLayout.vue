@@ -1,45 +1,46 @@
 <template>
-  <div class="h-screen flex bg-slate-900 text-slate-200">
-    <!-- 左侧导航 -->
+  <div class="flex min-h-screen">
     <SideNav />
 
-    <!-- 右侧主区域 -->
-    <div class="flex flex-col flex-1 overflow-hidden">
-      <!-- 顶部状态栏 -->
+    <main class="flex-1 p-6">
       <TopBar />
 
-      <!-- 主内容区 -->
-      <main class="flex-1 p-4 grid grid-cols-12 gap-4 overflow-auto">
-        <!-- 套利表（主角） -->
-        <section class="col-span-8 bg-slate-800 rounded-lg p-3">
-          <ArbitrageTable />
-        </section>
+      <!-- 顶部指标（视觉锚点） -->
+      <div class="grid grid-cols-4 gap-6 section">
+        <Metric title="Total Equity" value="$2000.46" delta="+4.82"/>
+        <Metric title="Binance USDT" value="$981.09" delta="-0.02%"/>
+        <Metric title="MEXC USDT" value="$1019.37" delta="+0.05%"/>
+        <Metric title="Engine Latency" value="16ms" delta="-2ms"/>
+      </div>
 
-        <!-- 右侧面板 -->
-        <section class="col-span-4 flex flex-col gap-4">
-          <div class="bg-slate-800 rounded-lg p-3">
-            <CapitalPanel />
-          </div>
+      <!-- 决策区 -->
+      <div class="grid grid-cols-12 gap-6 section">
+        <div class="col-span-7 card">
+          <div class="h2 mb-1">Real-time Spread Matrix</div>
+          <div class="sub mb-4">Cross-exchange spread monitoring</div>
+          <ArbTable/>
+        </div>
 
-          <div class="bg-slate-800 rounded-lg p-3 flex-1 overflow-auto">
-            <OrderbookPanel />
-          </div>
-        </section>
+        <div class="col-span-5 card">
+          <div class="h2 mb-3">Capital Allocation</div>
+          <Capital/>
+        </div>
+      </div>
 
-        <!-- 日志 -->
-        <section class="col-span-12 bg-slate-800 rounded-lg p-3 h-48 overflow-auto">
-          <LogPanel />
-        </section>
-      </main>
-    </div>
+      <!-- 日志 -->
+      <div class="card">
+        <div class="h2 mb-3">System Execution Log</div>
+        <Logs/>
+      </div>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import SideNav from '@/components/SideNav.vue'
-import TopBar from '@/components/TopBar.vue'
-import ArbitrageTable from '@/components/ArbitrageTable.vue'
-import OrderbookPanel from '@/components/OrderbookPanel.vue'
-import CapitalPanel from '@/components/CapitalPanel.vue'
-import LogPanel from '@/components/LogPanel.vue'
+import SideNav from '../components/SideNav.vue'
+import TopBar from '../components/TopBar.vue'
+import Metric from '../components/Metric.vue'
+import ArbTable from '../components/ArbTable.vue'
+import Capital from '../components/Capital.vue'
+import Logs from '../components/Logs.vue'
 </script>

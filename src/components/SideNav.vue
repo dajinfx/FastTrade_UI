@@ -1,13 +1,61 @@
 <template>
-  <aside class="w-56 bg-slate-950 border-r border-slate-800 p-4">
-    <h1 class="text-lg font-semibold mb-6 text-emerald-400">
-      Arb Console
-    </h1>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="title">Risk Control</div>
+      <div class="sub">Arbitrage Console</div>
+    </div>
 
-    <ul class="space-y-2 text-sm">
-      <li class="text-slate-300">套利监控</li>
-      <li class="text-slate-600">策略管理（预留）</li>
-      <li class="text-slate-600">账户管理（预留）</li>
-    </ul>
+    <nav class="menu">
+      <div class="item active">Spread Monitor</div>
+      <div class="item disabled">Strategy</div>
+      <div class="item disabled">Accounts</div>
+    </nav>
   </aside>
 </template>
+
+<style scoped>
+.sidebar {
+  width: 240px;
+  background: #f1f5f9;
+  border-right: 1px solid #e2e8f0;
+  padding: 20px 16px;
+}
+
+.brand {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sub {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.item.active {
+  background: #1e293b;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.item.disabled {
+  opacity: 0.4;
+}
+</style>
